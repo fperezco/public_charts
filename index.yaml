@@ -3,11 +3,11 @@ entries:
   gotenberg-chart-wata:
   - apiVersion: v2
     appVersion: "7"
-    created: "2025-05-09T11:03:12.131806+02:00"
+    created: "2025-05-09T12:45:49.690935+02:00"
     description: Simple Helm Chart with a Gotemberg service with LoadBalancer
     digest: 7a012cee94043c3329fd5c396734daff9ba53bd2f03adae1b1fe52bc4755eb2c
     name: gotenberg-chart-wata
     urls:
-    - https://github.com/pperezwata/public-charts/gotenberg-chart-wata-0.1.0.tgz
+    - https://fperezco.github.io/public_charts/gotenberg-chart-wata-0.1.0.tgz
     version: 0.1.0
-generated: "2025-05-09T11:03:12.131014+02:00"
+generated: "2025-05-09T12:45:49.690432+02:00"
