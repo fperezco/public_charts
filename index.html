@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!-- only to have something to present in the browser -->
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Helm Chart Repository</title>
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 2rem;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+            text-align: left;
+        }
+        th {
+            background: #f0f0f0;
+        }
+        caption {
+            text-align: left;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+<h1>Helm Chart Repository</h1>
+<p>Add this repository with:</p>
+<pre><code>helm repo add my-repo https://yourusername.github.io/your-repo</code></pre>
+
+<table id="charts-table">
+    <caption>Available Charts</caption>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Version</th>
+        <th>Description</th>
+        <th>URL</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- JS will populate this -->
+    </tbody>
+</table>
+
+<script>
+    fetch('index.yaml')
+        .then(response => response.text())
+        .then(text => {
+            const index = jsyaml.load(text);
+            const tbody = document.querySelector('#charts-table tbody');
+            Object.entries(index.entries).forEach(([chartName, versions]) => {
+                versions.forEach(chart => {
+                    const row = document.createElement('tr');
+
+                    const nameCell = document.createElement('td');
+                    nameCell.textContent = chartName;
+
+                    const versionCell = document.createElement('td');
+                    versionCell.textContent = chart.version;
+
+                    const descCell = document.createElement('td');
+                    descCell.textContent = chart.description || '—';
+
+                    const urlCell = document.createElement('td');
+                    const link = document.createElement('a');
+                    link.href = chart.urls[0];
+                    link.textContent = chart.urls[0];
+                    urlCell.appendChild(link);
+
+                    row.appendChild(nameCell);
+                    row.appendChild(versionCell);
+                    row.appendChild(descCell);
+                    row.appendChild(urlCell);
+
+                    tbody.appendChild(row);
+                });
+            });
+        })
+        .catch(err => {
+            const table = document.getElementById('charts-table');
+            table.innerHTML = '<tr><td colspan="4">Error loading index.yaml: ' + err + '</td></tr>';
+        });
+</script>
+</body>
+</html>
