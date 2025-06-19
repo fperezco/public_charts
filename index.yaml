@@ -3,11 +3,21 @@ entries:
   gotenberg-chart-wata:
   - apiVersion: v2
     appVersion: "7"
-    created: "2025-05-09T12:45:49.690935+02:00"
+    created: "2025-06-19T13:37:43.628689+02:00"
     description: Simple Helm Chart with a Gotemberg service with LoadBalancer
     digest: 7a012cee94043c3329fd5c396734daff9ba53bd2f03adae1b1fe52bc4755eb2c
     name: gotenberg-chart-wata
     urls:
     - https://fperezco.github.io/public_charts/gotenberg-chart-wata-0.1.0.tgz
     version: 0.1.0
-generated: "2025-05-09T12:45:49.690432+02:00"
+  gotenberg-odt-parser:
+  - apiVersion: v2
+    appVersion: "7"
+    created: "2025-06-19T13:37:43.628817+02:00"
+    description: A Helm chart for deploying a Gotemberg ODT Parser service
+    digest: b7b19e0cdabf027e26e2688d0089e00ba51ed8d931895e30bde1bbbe46d296bb
+    name: gotenberg-odt-parser
+    urls:
+    - https://fperezco.github.io/public_charts/gotenberg-odt-parser-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-06-19T13:37:43.628066+02:00"
